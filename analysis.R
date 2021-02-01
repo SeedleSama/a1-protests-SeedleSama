@@ -164,25 +164,25 @@ unique_states <- !duplicated(all_states)
 # are formatted for easy conversion).
 # - Note that you can check the "type" of a variable by using the `class()` function. 
 #   For example `class(protest_dates)` should produce `"Date"`.
-
+protests_dates <- as.Date(protests_df$Date)
 
 # What is the most recent date in the dataset? Save this value as `most_recent_date`
 # Hint: the `max()` function works just fine with Date types!
-
+most_recent_date <- max(protests_dates)
 
 # What is the earliest date in the dataset? Save this value as `earliest_date`
-
+earliest_date <- min(protests_dates)
 
 # What is the length of the time span of the dataset? That is, how much time
 # is there between the earliest and latest protest? Save this value as `time_span`
 # Hint: If you subtract `Date` types, you'll get a `difftime` ("time difference") type;
 # this value will appear blank in RStudio's Environment variables list, but you can
 # print it out to see it's value.
-
+time_span <- most_recent_date - earliest_date
 
 # Define a vector `dates_in_2020` containing protest dates that are in 2020.
 # Use vector filtering. Hint: filter for dates that are after Jan 1
-
+dates_in_2020 <- str_subset(protests_dates, Date >2020/1/1)
 
 # Define a vector `dates_in_2019` containing protest dates that are in 2019.
 # Use vector filtering. Hint: you can use the & operator to have multiple 

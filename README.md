@@ -33,6 +33,9 @@ Each reflection should be about 1-2 sentences long. You can organize the reflect
 
 2. Really suprising that WA is a state with a lot of highly educated people, this percentage is much lower than I expected.
 
+3. I found it keeps warning me about different types of datas. I should covert them into the same.
+
+
 ## Conclusion
 Once you are finished with your analysis (you've completed the `analysis.R` file), fill in this section by answering the following questions (in about 1-2 sentences each):
 
