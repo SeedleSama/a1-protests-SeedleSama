@@ -84,16 +84,17 @@ mean_median_diff <- round(mean_attendee_counts - median_attendee_counts, 0)
 
 # How many *unique* locations are in the data set? Store the result in `locations_count`
 # You will need to access the appropriate column from the `protests_df` data frame
-
-
+locations_count <- !duplicated(protests_df$Location)
+all_location <- protests_df$Location
 # How many protests occurred in Washington state? Use a function from the `stringr` 
 # package to *detect* locations with the letters "WA" Store the result in 
 # `wa_protests_count`. 
-
+wa_protests_count <- sum(str_detect(protests_df$Location, "WA"))
 
 # What percentage of all protests occurred in Washington State? Store the result
 # in `wa_protest_percentage`
-
+wa_protest_percentage <- (wa_protests_count/num_protests)
+wa_protest_percentage <- paste(wa_protest_percentage*100, "%", sep='')
 
 # Reflection #2: Does the number of protests in Washington surprise you? 
 # Why or why not?
@@ -107,27 +108,28 @@ mean_median_diff <- round(mean_attendee_counts - median_attendee_counts, 0)
 # will be a match for "Seattle, WA". Hint: use the same technique as you did above!
 # Your function must NOT reference `protests_df` directly; only use the argument
 # (functions should be "stand alone" and not reference non-argument variables)
-
+source('count_in_location.R')
 
 # Use your function to count the number of protests in "Washington, DC". Store the
 # result in `dc_count`
 # See how clean having a separate function is?
-
+dc_count <- count_in_location("Washington, DC",all_location)
 
 # Use your function to describe the number of protests in "Minneapolis", with format:
 #    "There were N protests in Minneapolis." 
 # (where N is the number of protests) Note spacing and punctuation!
 # Save the result as `minneapolis_summary`
-
+minneapolis_summary <- count_in_location("Minneapolis",all_location)
+minneapolis_summary <- paste("There were ",minneapolis_summary," protests in Minneapolis.", sep='')
 
 # Define a variable `all_states` that is a vector of strings, which are the 
 # last two characters of the values in the `Location` column.
 # Hint: look for another helpful function in the `stringr` package.
-
+all_states <- str_sub(all_location, -2)
 
 # Define a variable `unique_states` that are the unique state abbreviations in
 # the dataset.
-
+unique_states <- !duplicated(all_states)
 
 # Define a variable `state_counts` that is a tagged (named) vector of counts for
 # each state. Do this by using the `sapply()` function, passing your `unique_states`
@@ -135,7 +137,7 @@ mean_median_diff <- round(mean_attendee_counts - median_attendee_counts, 0)
 #
 # Note how amazing this is! sapply() let you call your function on entire vector at once!
 # Optional: use the View() function to more easily read the vector
-
+# state_counts <- sapply(unique_states, count_in_location)
 
 # You can create a tabular representation of this data by using the `table()`
 # function, passing in the `all_states` variable. Save the result in `state_table`
