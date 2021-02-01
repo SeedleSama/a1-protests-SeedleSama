@@ -15,20 +15,20 @@
 
 # Load the `stringr` package for use later (all package loading goes at the top)
 # Do not include any `install.package()` calls
-
+library("stringr") # Load the "stringr" package 
 
 # Use the `read.csv()` function to store the data from
 #   https://countlove.org/data/data.csv 
 # in a data frame variable called `protests_df`
-
+protests_df <- read.csv("data.csv", stringsAsFactors = FALSE) # Read data from csv
 
 # Define a variable `num_protests` that contains how many protests are in the 
 # data set
-
+num_protests <- nrow(protests_df)-1 # Number of protests is number of rows-1
 
 # Define a variable `feature_names` that contains the names (a vector of strings)
 # of the features in the data set
-
+feature_names <- colnames(protests_df) # Features' names are columns' names
 
 
 ###############################################################################

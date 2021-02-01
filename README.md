@@ -29,6 +29,7 @@ As you follow the instructions in the `analysis.R` file, you will be prompted to
 
 Each reflection should be about 1-2 sentences long. You can organize the reflections into an _ordered list_ or otherwise label which is which.
 
+1. First part of analysis.R help me read data from csv and store basic situation of the csv file in few vectors and one data frame. Also help computer load stringr package for later use.
 
 ## Conclusion
 Once you are finished with your analysis (you've completed the `analysis.R` file), fill in this section by answering the following questions (in about 1-2 sentences each):
