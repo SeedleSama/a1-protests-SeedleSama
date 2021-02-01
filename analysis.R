@@ -37,24 +37,25 @@ feature_names <- colnames(protests_df) # Features' names are columns' names
 
 # For clarity, extract the `Attendees` feature from the `protests_df` data frame
 # into a variable called `attendee_counts`. Use dollar notation.
-
+attendee_counts <- protests_df$Attendees
 
 # What is the highest number of attendees? Save result in `max_attendee_count`
 # (hint for this and other calculations: you'll need to _remove_ `NA` values)
-
+attendee_counts <- attendee_counts[!is.na(attendee_counts)]
+max_attendee_counts <- max(attendee_counts)
 
 # What is was the lowest number of attendees? Save result in `min_attendee_count`
-
+min_attendee_counts <- min(attendee_counts)
 
 # What is the average (mean) number of attendees? Save result in `mean_attendee_count`
-
+mean_attendee_counts <- mean(attendee_counts)
 
 # What is the median number of attendees? Save result in `median_attendee_count`
-
+median_attendee_counts <- median(attendee_counts)
 
 # How far apart are the the mean and median number of attendees? Calculate the
 # absolute value of the difference and store in a variable `mean_median_diff`
-
+mean_median_diff <- round(mean_attendee_counts - median_attendee_counts, 0)
 
 # Reflection #1: What does the difference between the mean and the median counts
 # tell you about the *distribution* of the data? You'll want to consider the
@@ -68,11 +69,13 @@ feature_names <- colnames(protests_df) # Features' names are columns' names
 # `attendee_count_boxplot` 
 # (We'll use more refined plotting methods with more attention to detail later)
 
+# attendee_count_boxplot <- boxplot(attendee_counts)
 
 # Create a second boxplot of the `log()` (natural logarithm) of the attendee counts.
 # You will see a warning in the console, which is expected.
 # Store this plot in a variable named `log_attendee_count_boxplot`
 
+# log_attendee_count_boxplot <- log(attendee_counts)
 
 
 ###############################################################################
