@@ -35,10 +35,20 @@ Each reflection should be about 1-2 sentences long. You can organize the reflect
 
 3. I found it keeps warning me about different types of datas. I should covert them into the same.
 
+4. Yes, the number had increased about 33.37%.
+
+5.  According to [USA Today](https://www.google.com/amp/s/amp.usatoday.com/amp/5337751002), a lot of cities ban on chokeholds, duty to intervene, and many other policies or activities were banned in 2020 though protests.
+
+6. The most protests are about racial injustice, the second one is Civial Rights
 
 ## Conclusion
 Once you are finished with your analysis (you've completed the `analysis.R` file), fill in this section by answering the following questions (in about 1-2 sentences each):
 
 1. What results from the analysis surprised you? Why?
+    A: Number of protests keeps increasing in 2020 by 33%. It's dangerous to keep protesting in such dangerous virus period.
+
 2. What parts of the analysis did you find most challenging?
+    A: Creating function is most challenging, it took me a long time to find a way to make every function work. It even made me forgot to commit after several parts were finished.
+
 3. What kind of analysis do you wish you were able to do with the dataset (but perhaps don't have the technical skills to do so)?
+    A: I want every analysised data can be performed and viewed in a clean and easy way instead of use print evrytime I want to test it, it took too much time.

@@ -179,19 +179,21 @@ earliest_date <- min(protests_dates)
 # this value will appear blank in RStudio's Environment variables list, but you can
 # print it out to see it's value.
 time_span <- most_recent_date - earliest_date
+time_span
 
 # Define a vector `dates_in_2020` containing protest dates that are in 2020.
 # Use vector filtering. Hint: filter for dates that are after Jan 1
-dates_in_2020 <- str_subset(protests_dates, Date >2020/1/1)
+dates_in_2020 <- protests_dates[format(protests_dates, "%Y")=="2020"]
 
 # Define a vector `dates_in_2019` containing protest dates that are in 2019.
 # Use vector filtering. Hint: you can use the & operator to have multiple 
 # filter conditions!
+dates_in_2019 <- protests_dates[format(protests_dates, "%Y")=="2019"]
 
 
 # By what ratio did the number of protests in 2020 change from the number in 2019?
 # Save the result in `ratio_dates_2020_to_2019`
-
+ratio_dates_2020_to_2019 <- (length(dates_in_2020)-length(dates_in_2019))/length(dates_in_2019)
 
 # Reflection #4: Does the change in the number of protests from 2019 to 2020
 # surprise you? Why or why not?
@@ -205,30 +207,38 @@ dates_in_2020 <- str_subset(protests_dates, Date >2020/1/1)
 #   "There were N protests on DATE."
 # where N is the number of protests, and DATE is the date provided.
 # Your function must NOT reference your `protest_dates` variarble directly!
-
+describe_protests_on_date <- function(date, dates){
+  n <- length(dates[dates==date])
+  return(paste0("There were ", n, " protests on ", date))
+}
 
 # Using your function, how many protests were there on May 24th, 2020? Save 
 # your result as `num_protests_may_24`
-
+num_protests_may_24 <- describe_protests_on_date(as.Date("2020-05-24"), protests_dates)
+num_protests_may_24
 
 # Using your function, how many protests were there on May 31th, 2020 (1 week 
 # later)? Save your result as `num_protests_may_31`
 # For more on this timeline, see: 
 # https://www.nytimes.com/article/george-floyd-protests-timeline.html
 
+num_protests_may_31 <- describe_protests_on_date(as.Date("2020-05-31"), protests_dates)
+num_protests_may_31
 
 # How many protests occurred during each month of 2020? Save your result as
 # `protest_counts_by_month`
 # Hint: You can use the `months()` function to extract the "month" from each
 # date in your `protests_dates`. Then you can use the `table()` function to
 # count those occurrences.
-
+protest_counts_by_month <- table(months(dates_in_2020))
+protest_counts_by_month
 
 # As an example, calculate the *difference* in the number of protests between
 # July 2020 and July 2019. Store your result in `change_july_count`
 # You will probably want to do this in multiple steps (making intermediate
 # variables as necessary).
-
+change_july_count <- table(months(dates_in_2020))["July"] - table(months(dates_in_2019))["July"] 
+change_july_count
 
 # Reflection #5: For this reflection, do some outside research. Find at least 
 # *two (2) specific policies* that have been changed as a result of protests 
@@ -243,10 +253,12 @@ dates_in_2020 <- str_subset(protests_dates, Date >2020/1/1)
 # For convenience, extract the `Event..legacy..see.tags.` column from your
 # `protests_df` data frame into a variable called `purposes`
 
+purposes <- protests_df$Event..legacy..see.tags.
 
 # How many different (unique) purposes are included in the dataset? Save your
 # result as `purposes_count`
-
+purposes_count <- length(unique(purposes))
+purposes_count
 
 # That's quite a few.
 # If you `View()` the `purposes` vector, you can notice that many purposes are
@@ -265,12 +277,14 @@ dates_in_2020 <- str_subset(protests_dates, Date >2020/1/1)
 
 # How many unique "high level" purposes did you identified? Store your result
 # in a variable `high_level_purpose_count`
-
+high_level_purposes <- str_trim(str_remove(purposes, "\\(.*\\)"))
 
 # Create a frequency count table that counts number of protests for each high 
 # level purpose. Save this table as `high_level_purpose table`
-
+high_level_purpose_table <- table(high_level_purposes)
+high_level_purpose_table
 
 # Reflection #6: Inspect (e.g., `View()`) the `high_level_purpose_table` What 
 # does this tell you about the current climate in the U.S.?
+
 
